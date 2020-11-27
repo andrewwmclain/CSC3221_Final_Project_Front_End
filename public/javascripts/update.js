@@ -1,13 +1,13 @@
-document.getElementById("removeBook").addEventListener("click",
+document.getElementById("updateBook").addEventListener("click",
     function(){
-        var isbn = document.getElementById("removeInput").value;
+        var isbn = document.getElementById("updateInput").value;
         var url = 'http://localhost:5000/api/books/'+isbn;
 
         var xhttp = new XMLHttpRequest();
 
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("removeTable").innerHTML = CreateTable(JSON.parse(this.responseText));
+                document.getElementById("updateTable").innerHTML = CreateTable(JSON.parse(this.responseText));
             }
         };
 
@@ -20,25 +20,23 @@ document.getElementById("removeBook").addEventListener("click",
 function CreateTable(data){
     let retVal = '';
 
+    // for (let book in data){
+        var isbn = data[0]["ISBN"];
+        var name = data[0]["Name"];
+        var author = data[0]["Author"];
+        var price =data[0]["Price"];
 
-    retVal =
-        '	<table> \n' +
-        '	<tbody> \n';
-
-    for (let book in data){
-        var isbn = data[book]["ISBN"];
         retVal +=
-            '<tr> \n' +
-            '	<td>' + data[book]["Name"] + '</td> \n' +
-            '	<td>' + data[book]["Author"] + '</td> \n' +
-            '	<td>' + data[book]["ISBN"] + '</td> \n' +
-            '	<td>' + data[book]["Price"] + '</td> \n' +
-            '   <td><button id="remove" onclick="removeBook('+isbn+')">Delete</button></td>\n' +
-            '</tr> \n';
-    }
-    retVal +=
-        '</tbody> \n' +
-        '</table> \n';
+        '<label for="nameUpdate">Name:</label> \n' +
+        '<input type="text" id="nameUpdate" name="nameUpdate" value="'+name+'"> \n' +
+        '<label for="authorUpdate">Author:</label> \n' +
+        '<input type="text" id="authorUpdate" name="authorUpdate" value="'+author+'"> \n' +
+        '<label for="isbnUpdate">ISBN:</label> \n' +
+        '<input type="text" id="isbnUpdate" name="isbnUpdate" value="'+isbn+'"> \n' +
+        '<label for="priceUpdate">Price:</label> \n' +
+        '<input type="text" id="priceUpdate" name="priceUpdate" value="'+price+'">'
+        ;
+    // }
 
     return retVal;
 }
