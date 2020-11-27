@@ -20,6 +20,15 @@
 
 <!--<input type='hidden' name='redirect_to' value='add.html' />-->
 
+<label for="findChoice">Search by:</label>
+
+<select name="findChoice" id="findChoice">
+    <option value="isbn">ISBN</option>
+    <option value="author">Author</option>
+</select>
+
+<input type="text" id="findInput" name="findInput">
+
 <button id="findBook">Find</button>
 
 <script src="javascripts/find.js"></script>

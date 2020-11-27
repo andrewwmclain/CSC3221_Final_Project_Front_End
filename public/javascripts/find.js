@@ -1,6 +1,14 @@
 document.getElementById("findBook").addEventListener("click",
     function(){
-        var url = 'http://localhost:5000/api/books/978-0439708180';
+        var e = document.getElementById("findChoice");
+
+        if(e.options[e.selectedIndex].value == "isbn"){
+            var isbn = document.getElementById("findInput").value;
+            var url = 'http://localhost:5000/api/books/'+isbn;
+        }else{
+            var author = document.getElementById("findInput").value;
+            var url = 'http://localhost:5000/api/books?author='+author;
+        }
 
         var xhttp = new XMLHttpRequest();
 
