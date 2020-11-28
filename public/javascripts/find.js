@@ -21,6 +21,9 @@ document.getElementById("findBook").addEventListener("click",
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("findTable").innerHTML = CreateTable(JSON.parse(this.responseText));
+                }else{
+                    document.getElementById("findTable").innerHTML = '<b>Book with ISBN '+isbn+
+                        ' not found!</b>';
                 }
             };
 
@@ -38,8 +41,19 @@ function CreateTable(data){
 
 
     retVal =
-        '	<table> \n' +
-        '	<tbody> \n';
+        // '	<table> \n' +
+        // '	<tbody> \n';
+        '<table class="table"> \n' +
+        '<thead>' +
+        '<tr>' +
+        '<th> Name </th>' +
+        '<th> Author </th>' +
+        '<th> ISBN </th>' +
+        '<th> Price </th>' +
+        '</tr>' +
+        '</thead>' +
+        '	<tbody> \n'
+    ;
 
     for (let book in data){
         retVal +=

@@ -17,8 +17,18 @@ function CreateTable(data){
 
 
     retVal =
-        '	<table> \n' +
-        '	<tbody> \n';
+        '	<table class="table"> \n' +
+        '<thead>' +
+        '<tr>' +
+        '<th> Name </th>' +
+        '<th> Author </th>' +
+        '<th> ISBN </th>' +
+        '<th> Price </th>' +
+        '</tr>' +
+        '</thead>' +
+        '	<tbody> \n'
+
+    ;
 
     for (let book in data){
         retVal +=

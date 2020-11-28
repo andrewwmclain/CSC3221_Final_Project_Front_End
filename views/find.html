@@ -36,10 +36,6 @@
 
 <!--<h1>Find</h1>-->
 
-<div id="findTable">
-
-</div>
-
 <!--<label for="isbnPost">ISBN:</label>-->
 <!--<input type="text" id="isbnPost" name="ISBN">-->
 
@@ -48,16 +44,35 @@
 
 <!--<input type='hidden' name='redirect_to' value='add.html' />-->
 
-<label for="findChoice">Search by:</label>
 
-<select name="findChoice" id="findChoice">
-    <option value="isbn">ISBN</option>
-    <option value="author">Author</option>
-</select>
+<!--<label for="findChoice">Search by:</label>-->
 
-<input type="text" id="findInput" name="findInput">
+<!--<select name="findChoice" id="findChoice">-->
+<!--    <option value="isbn">ISBN</option>-->
+<!--    <option value="author">Author</option>-->
+<!--</select>-->
 
-<button id="findBook">Find</button>
+<!--<input type="text" id="findInput" name="findInput">-->
+
+<!--<button id="findBook" class="btn btn-primary">Find</button>-->
+
+
+<div class="input-group mb-3" style="margin-left: 15px; margin-top: 5px;">
+    <div class="input-group-prepend">
+        <select name="findChoice" id="findChoice">
+            <option value="isbn">ISBN</option>
+            <option value="author">Author</option>
+        </select>
+    </div>
+    <input type="text" id="findInput" name="findInput">
+
+    <button id="findBook" class="btn btn-primary">Find</button>
+</div>
+
+
+<div id="findTable">
+
+</div>
 
 <script src="javascripts/find.js"></script>
 

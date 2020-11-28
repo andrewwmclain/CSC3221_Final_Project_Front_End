@@ -15,8 +15,8 @@ document.getElementById("updateBook").addEventListener("click",
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("updateTable").innerHTML = CreateTable(JSON.parse(this.responseText));
                 }else{
-                    document.getElementById("updateTable").innerHTML = 'Book with ISBN '+isbn+
-                        ' not found!';
+                    document.getElementById("updateTable").innerHTML = '<b>Book with ISBN '+isbn+
+                        ' not found!</b>';
                 }
             };
 
