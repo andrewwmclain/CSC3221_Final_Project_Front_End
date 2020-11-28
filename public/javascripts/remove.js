@@ -12,6 +12,9 @@ document.getElementById("removeBook").addEventListener("click",
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("removeTable").innerHTML = CreateTable(JSON.parse(this.responseText));
+                }else{
+                    document.getElementById("removeTable").innerHTML = 'Book with ISBN '+isbn+
+                        ' not found!';
                 }
             };
 
@@ -27,12 +30,11 @@ document.getElementById("removeBook").addEventListener("click",
 function CreateTable(data){
     let retVal = '';
 
-
     retVal =
         '	<table> \n' +
         '	<tbody> \n';
 
-    for (let book in data){
+    for (let book in data) {
         var isbn = data[book]["ISBN"];
         console.log(isbn);
         retVal +=
@@ -41,7 +43,7 @@ function CreateTable(data){
             '	<td>' + data[book]["Author"] + '</td> \n' +
             '	<td>' + data[book]["ISBN"] + '</td> \n' +
             '	<td>' + data[book]["Price"] + '</td> \n' +
-            '   <td><button id="remove" onclick="removeBook(\''+isbn+'\')">Delete</button></td>\n' +
+            '   <td><button id="remove" onclick="removeBook(\'' + isbn + '\')">Delete</button></td>\n' +
             '</tr> \n';
     }
     retVal +=
