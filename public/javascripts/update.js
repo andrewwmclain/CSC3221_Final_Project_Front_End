@@ -1,19 +1,28 @@
 document.getElementById("updateBook").addEventListener("click",
     function(){
+        var match = true;
+
         var isbn = document.getElementById("updateInput").value;
         var url = 'http://localhost:5000/api/books/'+isbn;
 
-        var xhttp = new XMLHttpRequest();
+        var re = /^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/;
+        match = re.exec(isbn);
 
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("updateTable").innerHTML = CreateTable(JSON.parse(this.responseText));
-            }
-        };
+        if(match) {
+            var xhttp = new XMLHttpRequest();
 
-        xhttp.open("GET", url,
-            true);
-        xhttp.send();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("updateTable").innerHTML = CreateTable(JSON.parse(this.responseText));
+                }
+            };
+
+            xhttp.open("GET", url,
+                true);
+            xhttp.send();
+        }else{
+            alert("Invalid ISBN format!");
+        }
     })
 
 
@@ -42,26 +51,37 @@ function CreateTable(data){
 
 function updateBook(){
 
+    var match = true;
+
     let name = document.getElementById("nameUpdate").value;
     let author = document.getElementById("authorUpdate").value;
     let isbn = document.getElementById("isbnUpdate").value;
     let price = document.getElementById("priceUpdate").value;
 
-    var url = 'http://localhost:5000/api/books/'+isbn;
+    var re = /^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/;
+    match = re.exec(isbn);
 
-    var params = 'Name='+name+'&Author='+author+'&ISBN='+isbn+'&Price='+price;
+    if(!match){
+        alert("Invalid ISBN format!");
+    }else if(!name | !author | !isbn | !price){
+        alert("Missing fields!");
+    }else {
+        var url = 'http://localhost:5000/api/books/' + isbn;
 
-    var xhttp = new XMLHttpRequest();
+        var params = 'Name=' + name + '&Author=' + author + '&ISBN=' + isbn + '&Price=' + price;
 
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            alert("Book updated!");
-            // window.location.href = 'add';
-        }
-    };
+        var xhttp = new XMLHttpRequest();
 
-    xhttp.open("PATCH", url,
-        true);
-    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhttp.send(params);
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                alert("Book updated!");
+                // window.location.href = 'add';
+            }
+        };
+
+        xhttp.open("PATCH", url,
+            true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.send(params);
+    }
 }
