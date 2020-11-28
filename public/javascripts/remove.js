@@ -3,17 +3,24 @@ document.getElementById("removeBook").addEventListener("click",
         var isbn = document.getElementById("removeInput").value;
         var url = 'http://localhost:5000/api/books/'+isbn;
 
-        var xhttp = new XMLHttpRequest();
+        var re = /^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/;
+        match = re.exec(isbn);
 
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("removeTable").innerHTML = CreateTable(JSON.parse(this.responseText));
-            }
-        };
+        if(match) {
+            var xhttp = new XMLHttpRequest();
 
-        xhttp.open("GET", url,
-            true);
-        xhttp.send();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("removeTable").innerHTML = CreateTable(JSON.parse(this.responseText));
+                }
+            };
+
+            xhttp.open("GET", url,
+                true);
+            xhttp.send();
+        }else{
+            alert("Invalid ISBN format!");
+        }
     })
 
 
@@ -27,13 +34,14 @@ function CreateTable(data){
 
     for (let book in data){
         var isbn = data[book]["ISBN"];
+        console.log(isbn);
         retVal +=
             '<tr> \n' +
             '	<td>' + data[book]["Name"] + '</td> \n' +
             '	<td>' + data[book]["Author"] + '</td> \n' +
             '	<td>' + data[book]["ISBN"] + '</td> \n' +
             '	<td>' + data[book]["Price"] + '</td> \n' +
-            '   <td><button id="remove" onclick="removeBook('+isbn+')">Delete</button></td>\n' +
+            '   <td><button id="remove" onclick="removeBook(\''+isbn+'\')">Delete</button></td>\n' +
             '</tr> \n';
     }
     retVal +=
@@ -47,6 +55,9 @@ function removeBook(isbn){
         // var url = 'https://csc3221-final-project-back-end.herokuapp.com/api/books';
 
         var url = 'http://localhost:5000/api/books/'+isbn;
+
+        alert(url);
+        alert(isbn);
 
         var xhttp = new XMLHttpRequest();
 

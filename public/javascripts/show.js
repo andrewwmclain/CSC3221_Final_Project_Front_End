@@ -10,7 +10,6 @@ xhttp.onreadystatechange = function() {
 
 xhttp.open("GET", url,
     true);
-// xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 xhttp.send();
 
 function CreateTable(data){
@@ -18,19 +17,9 @@ function CreateTable(data){
 
 
     retVal =
-    //     '<div class="jumbotron"> \n' +
-    //     '<h2>' + data["StopName"] + '</h2> \n' +
-    //     '<table class="table table-bordered table-hover"> \n' +
-    //     '	<thead> \n' +
-    //     '		<tr> \n' +
-    //     '			<th scope="col">Route ID</th> \n' +
-    //     '			<th scope="col">Direction</th> \n' +
-    //     '			<th scope="col">Estimated Minutes</th> \n' +
-    //     '			<th scope="col">Vehicle ID</th> \n' +
-    //     '		</tr> \n' +
         '	<table> \n' +
         '	<tbody> \n';
-    //
+
     for (let book in data){
         retVal +=
             '<tr> \n' +
@@ -44,6 +33,6 @@ function CreateTable(data){
     retVal +=
         '</tbody> \n' +
         '</table> \n';
-    //     '</div> \n ' ;
+
     return retVal;
 }

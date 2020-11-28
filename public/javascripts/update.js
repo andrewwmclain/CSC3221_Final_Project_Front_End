@@ -20,7 +20,6 @@ document.getElementById("updateBook").addEventListener("click",
 function CreateTable(data){
     let retVal = '';
 
-    // for (let book in data){
         var isbn = data[0]["ISBN"];
         var name = data[0]["Name"];
         var author = data[0]["Author"];
@@ -37,7 +36,6 @@ function CreateTable(data){
         '<input type="text" id="priceUpdate" name="priceUpdate" value="'+price+'">' +
         '<button id="updateButton" onclick="updateBook()">Update</button>'
         ;
-    // }
 
     return retVal;
 }
