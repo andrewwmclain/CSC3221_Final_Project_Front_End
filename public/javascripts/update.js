@@ -34,29 +34,36 @@ function CreateTable(data){
         '<label for="isbnUpdate">ISBN:</label> \n' +
         '<input type="text" id="isbnUpdate" name="isbnUpdate" value="'+isbn+'"> \n' +
         '<label for="priceUpdate">Price:</label> \n' +
-        '<input type="text" id="priceUpdate" name="priceUpdate" value="'+price+'">'
+        '<input type="text" id="priceUpdate" name="priceUpdate" value="'+price+'">' +
+        '<button id="updateButton" onclick="updateBook()">Update</button>'
         ;
     // }
 
     return retVal;
 }
 
-function removeBook(isbn){
-    // var url = 'https://csc3221-final-project-back-end.herokuapp.com/api/books';
+function updateBook(){
+
+    let name = document.getElementById("nameUpdate").value;
+    let author = document.getElementById("authorUpdate").value;
+    let isbn = document.getElementById("isbnUpdate").value;
+    let price = document.getElementById("priceUpdate").value;
 
     var url = 'http://localhost:5000/api/books/'+isbn;
+
+    var params = 'Name='+name+'&Author='+author+'&ISBN='+isbn+'&Price='+price;
 
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            alert("Book Removed!");
+            alert("Book updated!");
             // window.location.href = 'add';
         }
     };
 
-    xhttp.open("DELETE", url,
+    xhttp.open("PATCH", url,
         true);
-    // xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhttp.send();
+    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhttp.send(params);
 }
