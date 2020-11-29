@@ -36,7 +36,7 @@ function CreateTable(data){
         '<table class="table"> \n' +
         '<thead>' +
         '<tr>' +
-        '<th> Name </th>' +
+        '<th> Title </th>' +
         '<th> Author </th>' +
         '<th> ISBN </th>' +
         '<th> Price </th>' +
@@ -70,15 +70,12 @@ function removeBook(isbn){
 
         var url = 'http://localhost:5000/api/books/'+isbn;
 
-        alert(url);
-        alert(isbn);
-
         var xhttp = new XMLHttpRequest();
 
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 alert("Book Removed!");
-                // window.location.href = 'add';
+                window.location.href = '/remove';
             }
         };
 

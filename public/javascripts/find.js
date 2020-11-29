@@ -46,7 +46,7 @@ function CreateTable(data){
         '<table class="table"> \n' +
         '<thead>' +
         '<tr>' +
-        '<th> Name </th>' +
+        '<th> Title </th>' +
         '<th> Author </th>' +
         '<th> ISBN </th>' +
         '<th> Price </th>' +

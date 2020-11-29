@@ -38,15 +38,17 @@ function CreateTable(data){
         var price =data[0]["Price"];
 
         retVal +=
-        '<label for="nameUpdate">Name:</label> \n' +
+        '<div class="input-group mb-3" style="margin-left: 15px; margin-top: 5px;"> \n' +
+        '<label for="nameUpdate" style="padding: 5px;"><b>Name</b></label> \n' +
         '<input type="text" id="nameUpdate" name="nameUpdate" value="'+name+'"> \n' +
-        '<label for="authorUpdate">Author:</label> \n' +
+        '<label for="authorUpdate" style="padding: 5px;"><b>Author</b></label> \n' +
         '<input type="text" id="authorUpdate" name="authorUpdate" value="'+author+'"> \n' +
-        '<label for="isbnUpdate">ISBN:</label> \n' +
+        '<label for="isbnUpdate" style="padding: 5px;"><b>ISBN</b></label> \n' +
         '<input type="text" id="isbnUpdate" name="isbnUpdate" value="'+isbn+'"> \n' +
-        '<label for="priceUpdate">Price:</label> \n' +
+        '<label for="priceUpdate" style="padding: 5px;"><b>Price</b></label> \n' +
         '<input type="text" id="priceUpdate" name="priceUpdate" value="'+price+'">' +
-        '<button id="updateButton" onclick="updateBook()">Update</button>'
+        '<button id="updateButton" onclick="updateBook()" class="btn btn-primary">Update</button>' +
+        '</div>'
         ;
 
     return retVal;
