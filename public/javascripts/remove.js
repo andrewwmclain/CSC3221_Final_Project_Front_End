@@ -2,7 +2,7 @@ document.getElementById("removeBook").addEventListener("click",
     function(){
         var isbn = document.getElementById("removeInput").value;
         // var url = 'http://localhost:5000/api/books/'+isbn;
-        var url = 'https://csc3221-final-project-back-end.herokuapp.com/api/books'+isbn;
+        var url = 'https://csc3221-final-project-back-end.herokuapp.com/api/books/'+isbn;
 
         var re = /^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/;
         match = re.exec(isbn);
