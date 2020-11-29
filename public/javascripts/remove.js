@@ -67,7 +67,7 @@ function CreateTable(data){
 }
 
 function removeBook(isbn){
-        var url = 'https://csc3221-final-project-back-end.herokuapp.com/api/books'+isbn;
+        var url = 'https://csc3221-final-project-back-end.herokuapp.com/api/books/'+isbn;
 
         // var url = 'http://localhost:5000/api/books/'+isbn;
 
