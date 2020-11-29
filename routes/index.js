@@ -26,4 +26,8 @@ router.get('/update', function(req, res, next) {
      res.sendFile('update.html', {root: 'views'})
 });
 
+router.get('/extra_credit', function(req, res, next) {
+     res.sendFile('extra_credit.html', {root: 'views'})
+});
+
 module.exports = router;
