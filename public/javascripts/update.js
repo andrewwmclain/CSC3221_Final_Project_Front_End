@@ -83,7 +83,7 @@ function updateBook(){
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 alert("Book updated!");
-                // window.location.href = 'add';
+                window.location.href = 'update';
             }
         };
 
