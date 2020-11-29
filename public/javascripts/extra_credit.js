@@ -1,4 +1,8 @@
 // var url = 'http://localhost:5000/api/books';
+function round(value, decimals) {
+    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
+
 var url = 'https://csc3221-final-project-back-end.herokuapp.com/api/books';
 
 
@@ -115,7 +119,7 @@ function updateRow(name, author, isbn, price){
     document.getElementById(isbn).innerHTML =
         '<td><input type="text" id="ecnameUpdate" name="ecnameUpdate" value="'+name+'"></td>' +
         '<td><input type="text" id="ecauthorUpdate" name="ecauthorUpdate" value="'+author+'"></td>' +
-        '<td><input type="text" id="ecisbnUpdate" name="ecisbnUpdate" value="'+isbn+'"></td>' +
+        '<td id="ecisbnUpdate">'+isbn+'</td>' +
         '<td><input type="text" id="ecpriceUpdate" name="ecpriceUpdate" value="'+price+'"></td>' +
         '<td><button id="ecUpdateButton" onclick="ecUpdateBook()" class="btn btn-primary">Update</button></td>'
 }
@@ -126,7 +130,7 @@ function ecUpdateBook(){
 
     let name = document.getElementById("ecnameUpdate").value;
     let author = document.getElementById("ecauthorUpdate").value;
-    let isbn = document.getElementById("ecisbnUpdate").value;
+    let isbn = document.getElementById("ecisbnUpdate").innerText;
     let price = document.getElementById("ecpriceUpdate").value;
 
     var re = /^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/;
@@ -188,7 +192,7 @@ function CreateTable(data){
             '<td>' + data[book]["Name"] + '</td> \n' +
             '<td>' + data[book]["Author"] + '</td> \n' +
             '<td>' + data[book]["ISBN"] + '</td> \n' +
-            '<td>' + data[book]["Price"] + '</td> \n' +
+            '<td>$' + data[book]["Price"].toFixed(2) + '</td> \n' +
             '<td><button type="button" class="btn btn-danger" id="ecRemove" onclick="removeBook(\'' +
              data[book]["ISBN"] + '\')">Delete</button></td>\n' +
             // '</tr> \n' +
