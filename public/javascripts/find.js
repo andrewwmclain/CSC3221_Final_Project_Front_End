@@ -6,13 +6,15 @@ document.getElementById("findBook").addEventListener("click",
 
         if(e.options[e.selectedIndex].value == "isbn"){
             var isbn = document.getElementById("findInput").value;
-            var url = 'http://localhost:5000/api/books/'+isbn;
+            var url = 'https://csc3221-final-project-back-end.herokuapp.com/api/books'+isbn;
+            // var url = 'http://localhost:5000/api/books/'+isbn;
 
             var re = /^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/;
             match = re.exec(isbn);
         }else{
             var author = document.getElementById("findInput").value;
-            var url = 'http://localhost:5000/api/books?author='+author;
+            var url = 'https://csc3221-final-project-back-end.herokuapp.com/api/books'+author;
+            // var url = 'http://localhost:5000/api/books?author='+author;
         }
 
         if(match) {

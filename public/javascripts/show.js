@@ -1,4 +1,6 @@
-var url = 'http://localhost:5000/api/books';
+// var url = 'http://localhost:5000/api/books';
+var url = 'https://csc3221-final-project-back-end.herokuapp.com/api/books';
+
 
 var xhttp = new XMLHttpRequest();
 

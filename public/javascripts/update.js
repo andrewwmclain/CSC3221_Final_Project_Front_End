@@ -3,7 +3,8 @@ document.getElementById("updateBook").addEventListener("click",
         var match = true;
 
         var isbn = document.getElementById("updateInput").value;
-        var url = 'http://localhost:5000/api/books/'+isbn;
+        // var url = 'http://localhost:5000/api/books/'+isbn;
+        var url = 'https://csc3221-final-project-back-end.herokuapp.com/api/books'+isbn;
 
         var re = /^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/;
         match = re.exec(isbn);
@@ -71,7 +72,9 @@ function updateBook(){
     }else if(!name | !author | !isbn | !price){
         alert("Missing fields!");
     }else {
-        var url = 'http://localhost:5000/api/books/' + isbn;
+        // var url = 'http://localhost:5000/api/books/' + isbn;
+        var url = 'https://csc3221-final-project-back-end.herokuapp.com/api/books'+isbn;
+
 
         var params = 'Name=' + name + '&Author=' + author + '&ISBN=' + isbn + '&Price=' + price;
 
