@@ -16,19 +16,23 @@ document.getElementById("submitNewBook").addEventListener("click",
         match = re.exec(isbn);
 
         if(match){
-            var xhttp = new XMLHttpRequest();
+            if(!name || !author || !isbn || !price){
+                alert("Missing fields!");
+            }else {
+                var xhttp = new XMLHttpRequest();
 
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    alert("Book added!");
-                    window.location.href = 'add';
-                }
-            };
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        alert("Book added!");
+                        window.location.href = 'add';
+                    }
+                };
 
-            xhttp.open("POST", url,
-                true);
-            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            xhttp.send(params);
+                xhttp.open("POST", url,
+                    true);
+                xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhttp.send(params);
+            }
         }else{
             alert("Invalid ISBN format!");
         }
