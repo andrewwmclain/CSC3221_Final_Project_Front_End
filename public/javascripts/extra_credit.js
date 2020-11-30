@@ -84,8 +84,6 @@ document.getElementById("ecSubmitNewBook").addEventListener("click",
                     if (this.readyState == 4 && this.status == 200) {
                         alert("Book added!");
                         window.location.href = 'extra_credit';
-                    }else{
-                        alert("Invalid ISBN!");
                     }
                 };
 
