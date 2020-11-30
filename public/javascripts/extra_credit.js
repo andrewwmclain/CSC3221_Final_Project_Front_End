@@ -59,10 +59,10 @@ document.getElementById("ecFindBook").addEventListener("click",
 
 document.getElementById("ecSubmitNewBook").addEventListener("click",
     function(){
-        // var url = 'https://csc3221-final-project-back-end.herokuapp.com/api/books';
+        var url = 'https://csc3221-final-project-back-end.herokuapp.com/api/books';
         var match = true;
 
-        var url = 'http://localhost:5000/api/books';
+        // var url = 'http://localhost:5000/api/books';
 
         let name = document.getElementById("ecNamePost").value;
         let author = document.getElementById("ecAuthorPost").value;
