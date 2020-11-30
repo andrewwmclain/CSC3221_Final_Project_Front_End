@@ -59,10 +59,10 @@ document.getElementById("ecFindBook").addEventListener("click",
 
 document.getElementById("ecSubmitNewBook").addEventListener("click",
     function(){
-        var url = 'https://csc3221-final-project-back-end.herokuapp.com/api/books';
+        // var url = 'https://csc3221-final-project-back-end.herokuapp.com/api/books';
         var match = true;
 
-        // var url = 'http://localhost:5000/api/books';
+        var url = 'http://localhost:5000/api/books';
 
         let name = document.getElementById("ecNamePost").value;
         let author = document.getElementById("ecAuthorPost").value;
@@ -84,6 +84,8 @@ document.getElementById("ecSubmitNewBook").addEventListener("click",
                     if (this.readyState == 4 && this.status == 200) {
                         alert("Book added!");
                         window.location.href = 'extra_credit';
+                    }else{
+                        alert("Invalid ISBN!");
                     }
                 };
 
@@ -93,7 +95,7 @@ document.getElementById("ecSubmitNewBook").addEventListener("click",
                 xhttp.send(params);
             }
         }else{
-            alert("Invalid ISBN format!");
+            alert("Invalid ISBN!");
         }
     }
 )
